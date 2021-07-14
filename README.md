@@ -1,13 +1,106 @@
 # nestjs-class-validator (multi-languages supported)
-
-![Build Status](https://github.com/kurollo/class-validator/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/typestack/class-validator/branch/develop/graph/badge.svg)](https://codecov.io/gh/typestack/class-validator)
-[![npm version](https://badge.fury.io/js/class-validator.svg)](https://badge.fury.io/js/class-validator)
-[![install size](https://packagephobia.now.sh/badge?p=class-validator)](https://packagephobia.now.sh/result?p=class-validator)
-
+ 
 Allows use of decorator and non-decorator based validation.
 Internally uses [validator.js][1] to perform validation with multi-languages messages supported.
 Nestjs-Class-validator works on both browser and node.js platforms.
+
+## Nestjs-class-validator with multi-language
+You can specify validation language in the decorator options and the default message will be returned in the ValidationError based in your language returned by the validate method.
+
+#####NB: language option is required always, if you want to use one language without translate then you should specify your language like this example `language: "en": 
+
+```
+...
+    @Length(10, 20, {
+        language: "en",
+    })
+...
+```
+
+
+```typescript
+import { StoreBaseDto } from "./storeBase.dto";
+import {Contains, Length} from "nestjs-class-validator";
+
+export class StoreCreateDto extends StoreBaseDto {
+    @Length(10, 20, {
+        language: "fr",
+    })
+    name: string
+
+    @Contains("nestjs-example", {
+        language: "fr",
+    })
+    description?: string
+}
+```
+
+**request (body request through postman):**
+
+```
+{
+    "name" : "one",
+    "description" : "different"
+}
+```
+
+
+**result :** 
+
+```
+{
+    "statusCode": 400,
+    "message": [
+        "name doit être inférieur ou égal à 20 caractères",
+        "description doit contenir une chaîne de caractères nestjs-example"
+    ],
+    "error": "Bad Request"
+}
+```
+
+You can disable option language by override the message, in this case the option message will disable the language and display your message as he is returned by the validate method. 
+
+```typescript
+import { StoreBaseDto } from "./storeBase.dto";
+import {Contains, Length} from "nestjs-class-validator";
+
+export class StoreCreateDto extends StoreBaseDto {
+    @Length(10, 20, {
+        message: "exemple d'un message d'erreur...",
+        language: "fr",
+    })
+    name: string
+
+    @Contains("nestjs-exemple", {
+        language: "fr",
+    })
+    description?: string
+}
+```
+
+
+**request (body request through postman):**
+
+```
+{
+    "name" : "one",
+    "description" : "different"
+}
+```
+
+
+**result :** 
+
+```
+{
+    "statusCode": 400,
+    "message": [
+        "exemple d'un message d'erreur...",
+        "description doit contenir une chaîne de caractères nestjs-exemple"
+    ],
+    "error": "Bad Request"
+}
+```
 
 ## Table of Contents
 
