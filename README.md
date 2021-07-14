@@ -1,6 +1,6 @@
 # nestjs-class-validator (multi-languages supported)
 
-![Build Status](https://github.com/typestack/class-validator/workflows/CI/badge.svg)
+![Build Status](https://github.com/kurollo/class-validator/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/typestack/class-validator/branch/develop/graph/badge.svg)](https://codecov.io/gh/typestack/class-validator)
 [![npm version](https://badge.fury.io/js/class-validator.svg)](https://badge.fury.io/js/class-validator)
 [![install size](https://packagephobia.now.sh/badge?p=class-validator)](https://packagephobia.now.sh/result?p=class-validator)

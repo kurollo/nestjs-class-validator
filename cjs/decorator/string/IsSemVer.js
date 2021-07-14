@@ -20,11 +20,12 @@ exports.isSemVer = isSemVer;
  * If given value is not a string, then it returns false.
  */
 function IsSemVer(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_SEM_VER,
         validator: {
             validate: (value, args) => isSemVer(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a Semantic Versioning Specification', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a Semantic Versioning Specification'], validationOptions),
         },
     }, validationOptions);
 }

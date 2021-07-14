@@ -19,12 +19,13 @@ function Matches(pattern, modifiersOrAnnotationOptions, validationOptions) {
     else {
         modifiers = modifiersOrAnnotationOptions;
     }
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.MATCHES,
         constraints: [pattern, modifiers],
         validator: {
             validate: (value, args) => matches(value, args.constraints[0], args.constraints[1]),
-            defaultMessage: ValidateBy_1.buildMessage((eachPrefix, args) => eachPrefix + '$property must match $constraint1 regular expression', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage((eachPrefix, args) => eachPrefix + translate['$property must match $constraint1 regular expression'], validationOptions),
         },
     }, validationOptions);
 }

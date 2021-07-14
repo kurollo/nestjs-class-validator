@@ -18,12 +18,13 @@ exports.arrayContains = arrayContains;
  * If null or undefined is given then this function returns false.
  */
 function ArrayContains(values, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.ARRAY_CONTAINS,
         constraints: [values],
         validator: {
             validate: (value, args) => arrayContains(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain $constraint1 values', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain $constraint1 values'], validationOptions),
         },
     }, validationOptions);
 }

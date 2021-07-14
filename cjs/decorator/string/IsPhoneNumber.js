@@ -32,12 +32,13 @@ exports.isPhoneNumber = isPhoneNumber;
  * If text doesn't start with the international calling code (e.g. +41), then you must set this parameter.
  */
 function IsPhoneNumber(region, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_PHONE_NUMBER,
         constraints: [region],
         validator: {
             validate: (value, args) => isPhoneNumber(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid phone number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid phone number'], validationOptions),
         },
     }, validationOptions);
 }

@@ -20,11 +20,12 @@ exports.isJSON = isJSON;
  * If given value is not a string, then it returns false.
  */
 function IsJSON(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_JSON,
         validator: {
             validate: (value, args) => isJSON(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a json string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a json string'], validationOptions),
         },
     }, validationOptions);
 }

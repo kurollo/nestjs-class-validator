@@ -20,12 +20,13 @@ exports.isDecimal = isDecimal;
  * If given value is not a string, then it returns false.
  */
 function IsDecimal(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_DECIMAL,
         constraints: [options],
         validator: {
             validate: (value, args) => isDecimal(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property is not a valid decimal number.', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property is not a valid decimal number.'], validationOptions),
         },
     }, validationOptions);
 }

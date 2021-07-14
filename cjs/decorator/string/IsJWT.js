@@ -20,11 +20,12 @@ exports.isJWT = isJWT;
  * If given value is not a string, then it returns false.
  */
 function IsJWT(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_JWT,
         validator: {
             validate: (value, args) => isJWT(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a jwt string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a jwt string'], validationOptions),
         },
     }, validationOptions);
 }

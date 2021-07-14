@@ -18,11 +18,12 @@ exports.isLatLong = isLatLong;
  * Checks if a value is string in format a "latitude,longitude".
  */
 function IsLatLong(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_LATLONG,
         validator: {
             validate: (value, args) => isLatLong(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a latitude,longitude string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a latitude,longitude string'], validationOptions),
         },
     }, validationOptions);
 }

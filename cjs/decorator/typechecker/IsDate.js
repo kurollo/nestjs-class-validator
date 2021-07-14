@@ -14,11 +14,12 @@ exports.isDate = isDate;
  * Checks if a value is a date.
  */
 function IsDate(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_DATE,
         validator: {
             validate: (value, args) => isDate(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a Date instance', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a Date instance'], validationOptions),
         },
     }, validationOptions);
 }

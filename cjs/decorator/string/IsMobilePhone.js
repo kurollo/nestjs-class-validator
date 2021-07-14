@@ -36,12 +36,13 @@ exports.isMobilePhone = isMobilePhone;
  * If given value is not a string, then it returns false.
  */
 function IsMobilePhone(locale, options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_MOBILE_PHONE,
         constraints: [locale, options],
         validator: {
             validate: (value, args) => isMobilePhone(value, args.constraints[0], args.constraints[1]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a phone number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a phone number'], validationOptions),
         },
     }, validationOptions);
 }

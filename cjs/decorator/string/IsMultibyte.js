@@ -20,11 +20,12 @@ exports.isMultibyte = isMultibyte;
  * If given value is not a string, then it returns false.
  */
 function IsMultibyte(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_MULTIBYTE,
         validator: {
             validate: (value, args) => isMultibyte(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain one or more multibyte chars', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain one or more multibyte chars'], validationOptions),
         },
     }, validationOptions);
 }

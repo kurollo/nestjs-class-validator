@@ -16,11 +16,12 @@ exports.arrayNotEmpty = arrayNotEmpty;
  * If null or undefined is given then this function returns false.
  */
 function ArrayNotEmpty(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.ARRAY_NOT_EMPTY,
         validator: {
             validate: (value, args) => arrayNotEmpty(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property should not be empty', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property should not be empty'], validationOptions),
         },
     }, validationOptions);
 }

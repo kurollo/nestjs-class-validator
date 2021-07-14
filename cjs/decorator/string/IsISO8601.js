@@ -22,12 +22,13 @@ exports.isISO8601 = isISO8601;
  * Use the option strict = true for additional checks for a valid date, e.g. invalidates dates like 2019-02-29.
  */
 function IsISO8601(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ISO8601,
         constraints: [options],
         validator: {
             validate: (value, args) => isISO8601(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid ISO 8601 date string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid ISO 8601 date string'], validationOptions),
         },
     }, validationOptions);
 }

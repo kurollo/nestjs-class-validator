@@ -20,12 +20,13 @@ exports.isNumberString = isNumberString;
  * If given value is not a string, then it returns false.
  */
 function IsNumberString(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_NUMBER_STRING,
         constraints: [options],
         validator: {
             validate: (value, args) => isNumberString(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a number string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a number string'], validationOptions),
         },
     }, validationOptions);
 }

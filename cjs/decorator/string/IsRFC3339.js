@@ -20,11 +20,12 @@ exports.isRFC3339 = isRFC3339;
  * If given value is not a string, then it returns false.
  */
 function IsRFC3339(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_RFC_3339,
         validator: {
             validate: (value, args) => isRFC3339(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be RFC 3339 date', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be RFC 3339 date'], validationOptions),
         },
     }, validationOptions);
 }

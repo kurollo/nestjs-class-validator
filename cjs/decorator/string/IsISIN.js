@@ -20,11 +20,12 @@ exports.isISIN = isISIN;
  * If given value is not a string, then it returns false.
  */
 function IsISIN(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ISIN,
         validator: {
             validate: (value, args) => isISIN(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an ISIN (stock/security identifier)', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an ISIN (stock/security identifier)'], validationOptions),
         },
     }, validationOptions);
 }

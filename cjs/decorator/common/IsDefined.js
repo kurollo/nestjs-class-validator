@@ -16,11 +16,12 @@ exports.isDefined = isDefined;
  * Checks if value is defined (!== undefined, !== null).
  */
 function IsDefined(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_DEFINED,
         validator: {
             validate: (value) => isDefined(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property should not be null or undefined', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property should not be null or undefined'], validationOptions),
         },
     }, validationOptions);
 }

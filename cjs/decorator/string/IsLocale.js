@@ -20,11 +20,12 @@ exports.isLocale = isLocale;
  * If given value is not a string, then it returns false.
  */
 function IsLocale(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_LOCALE,
         validator: {
             validate: (value, args) => isLocale(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be locale', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be locale'], validationOptions),
         },
     }, validationOptions);
 }

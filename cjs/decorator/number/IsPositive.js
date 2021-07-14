@@ -14,11 +14,12 @@ exports.isPositive = isPositive;
  * Checks if the value is a positive number greater than zero.
  */
 function IsPositive(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_POSITIVE,
         validator: {
             validate: (value, args) => isPositive(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a positive number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a positive number'], validationOptions),
         },
     }, validationOptions);
 }

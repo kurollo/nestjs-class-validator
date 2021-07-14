@@ -20,11 +20,12 @@ exports.isAscii = isAscii;
  * If given value is not a string, then it returns false.
  */
 function IsAscii(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ASCII,
         validator: {
             validate: (value, args) => isAscii(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain only ASCII characters', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain only ASCII characters'], validationOptions),
         },
     }, validationOptions);
 }

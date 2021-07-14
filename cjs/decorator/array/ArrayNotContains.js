@@ -18,12 +18,13 @@ exports.arrayNotContains = arrayNotContains;
  * If null or undefined is given then this function returns false.
  */
 function ArrayNotContains(values, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.ARRAY_NOT_CONTAINS,
         constraints: [values],
         validator: {
             validate: (value, args) => arrayNotContains(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property should not contain $constraint1 values', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property should not contain $constraint1 values'], validationOptions),
         },
     }, validationOptions);
 }

@@ -20,11 +20,12 @@ exports.isBase32 = isBase32;
  * If given value is not a string, then it returns false.
  */
 function IsBase32(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_BASE32,
         validator: {
             validate: (value, args) => isBase32(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be base32 encoded', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be base32 encoded'], validationOptions),
         },
     }, validationOptions);
 }

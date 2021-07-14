@@ -20,12 +20,13 @@ exports.isEmail = isEmail;
  * If given value is not a string, then it returns false.
  */
 function IsEmail(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_EMAIL,
         constraints: [options],
         validator: {
             validate: (value, args) => isEmail(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an email', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an email'], validationOptions),
         },
     }, validationOptions);
 }

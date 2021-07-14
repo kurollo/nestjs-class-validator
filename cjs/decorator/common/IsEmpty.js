@@ -14,11 +14,12 @@ exports.isEmpty = isEmpty;
  * Checks if given value is empty (=== '', === null, === undefined).
  */
 function IsEmpty(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_EMPTY,
         validator: {
             validate: (value, args) => isEmpty(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be empty', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be empty'], validationOptions),
         },
     }, validationOptions);
 }

@@ -24,11 +24,12 @@ exports.arrayUnique = arrayUnique;
 function ArrayUnique(identifierOrOptions, validationOptions) {
     const identifier = typeof identifierOrOptions === 'function' ? identifierOrOptions : undefined;
     const options = typeof identifierOrOptions !== 'function' ? identifierOrOptions : validationOptions;
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.ARRAY_UNIQUE,
         validator: {
             validate: (value, args) => arrayUnique(value, identifier),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + "All $property's elements must be unique", options),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate["All $property's elements must be unique"], options),
         },
     }, options);
 }

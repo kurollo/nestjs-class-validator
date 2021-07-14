@@ -20,11 +20,12 @@ exports.isSurrogatePair = isSurrogatePair;
  * If given value is not a string, then it returns false.
  */
 function IsSurrogatePair(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_SURROGATE_PAIR,
         validator: {
             validate: (value, args) => isSurrogatePair(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain any surrogate pairs chars', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain any surrogate pairs chars'], validationOptions),
         },
     }, validationOptions);
 }

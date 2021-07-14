@@ -14,12 +14,13 @@ exports.equals = equals;
  * Checks if value matches ("===") the comparison.
  */
 function Equals(comparison, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.EQUALS,
         constraints: [comparison],
         validator: {
             validate: (value, args) => equals(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be equal to $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be equal to $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

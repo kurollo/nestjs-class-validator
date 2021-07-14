@@ -20,11 +20,12 @@ exports.isHexColor = isHexColor;
  * If given value is not a string, then it returns false.
  */
 function IsHexColor(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_HEX_COLOR,
         validator: {
             validate: (value, args) => isHexColor(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a hexadecimal color', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a hexadecimal color'], validationOptions),
         },
     }, validationOptions);
 }

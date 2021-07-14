@@ -20,11 +20,12 @@ exports.isUppercase = isUppercase;
  * If given value is not a string, then it returns false.
  */
 function IsUppercase(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_UPPERCASE,
         validator: {
             validate: (value, args) => isUppercase(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be uppercase', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be uppercase'], validationOptions),
         },
     }, validationOptions);
 }

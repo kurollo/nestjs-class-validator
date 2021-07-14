@@ -20,11 +20,12 @@ exports.isFullWidth = isFullWidth;
  * If given value is not a string, then it returns false.
  */
 function IsFullWidth(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_FULL_WIDTH,
         validator: {
             validate: (value, args) => isFullWidth(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain a full-width characters', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain a full-width characters'], validationOptions),
         },
     }, validationOptions);
 }

@@ -24,12 +24,13 @@ exports.isIdentityCard = isIdentityCard;
  * If given value is not a string, then it returns false.
  */
 function IsIdentityCard(locale, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_IDENTITY_CARD,
         constraints: [locale],
         validator: {
             validate: (value, args) => isIdentityCard(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a identity card number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a identity card number'], validationOptions),
         },
     }, validationOptions);
 }

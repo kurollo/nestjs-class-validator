@@ -14,12 +14,13 @@ exports.minDate = minDate;
  * Checks if the value is a date that's after the specified date.
  */
 function MinDate(date, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.MIN_DATE,
         constraints: [date],
         validator: {
             validate: (value, args) => minDate(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => 'minimal allowed date for ' + eachPrefix + '$property is $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => translate['minimal allowed date for '] + eachPrefix + translate['$property is $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

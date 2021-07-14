@@ -20,12 +20,13 @@ exports.isFQDN = isFQDN;
  * If given value is not a string, then it returns false.
  */
 function IsFQDN(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_FQDN,
         constraints: [options],
         validator: {
             validate: (value, args) => isFQDN(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid domain name', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid domain name'], validationOptions),
         },
     }, validationOptions);
 }

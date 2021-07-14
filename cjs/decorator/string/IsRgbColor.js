@@ -22,12 +22,13 @@ exports.isRgbColor = isRgbColor;
  * If given value is not a string, then it returns false.
  */
 function IsRgbColor(includePercentValues, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_RGB_COLOR,
         constraints: [includePercentValues],
         validator: {
             validate: (value, args) => isRgbColor(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be RGB color', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be RGB color'], validationOptions),
         },
     }, validationOptions);
 }

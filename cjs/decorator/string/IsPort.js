@@ -18,11 +18,12 @@ exports.isPort = isPort;
  * Check if the string is a valid port number.
  */
 function IsPort(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_PORT,
         validator: {
             validate: (value, args) => isPort(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a port', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a port'], validationOptions),
         },
     }, validationOptions);
 }

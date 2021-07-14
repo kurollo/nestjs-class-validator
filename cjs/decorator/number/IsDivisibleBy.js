@@ -18,12 +18,13 @@ exports.isDivisibleBy = isDivisibleBy;
  * Checks if value is a number that's divisible by another.
  */
 function IsDivisibleBy(num, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_DIVISIBLE_BY,
         constraints: [num],
         validator: {
             validate: (value, args) => isDivisibleBy(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be divisible by $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be divisible by $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

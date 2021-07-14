@@ -14,12 +14,13 @@ exports.min = min;
  * Checks if the first number is greater than or equal to the second.
  */
 function Min(minValue, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.MIN,
         constraints: [minValue],
         validator: {
             validate: (value, args) => min(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must not be less than $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must not be less than $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

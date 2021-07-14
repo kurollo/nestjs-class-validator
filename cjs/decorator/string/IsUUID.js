@@ -20,12 +20,13 @@ exports.isUUID = isUUID;
  * If given value is not a string, then it returns false.
  */
 function IsUUID(version, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_UUID,
         constraints: [version],
         validator: {
             validate: (value, args) => isUUID(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a UUID', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a UUID'], validationOptions),
         },
     }, validationOptions);
 }

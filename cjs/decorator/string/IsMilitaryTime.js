@@ -21,11 +21,12 @@ exports.isMilitaryTime = isMilitaryTime;
  * If the given value does not match the pattern HH:MM, then it returns false.
  */
 function IsMilitaryTime(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_MILITARY_TIME,
         validator: {
             validate: (value, args) => isMilitaryTime(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid representation of military time in the format HH:MM', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid representation of military time in the format HH:MM'], validationOptions),
         },
     }, validationOptions);
 }

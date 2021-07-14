@@ -18,11 +18,12 @@ exports.isISO31661Alpha3 = isISO31661Alpha3;
  * Check if the string is a valid [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) officially assigned country code.
  */
 function IsISO31661Alpha3(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ISO31661_ALPHA_3,
         validator: {
             validate: (value, args) => isISO31661Alpha3(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid ISO31661 Alpha3 code', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid ISO31661 Alpha3 code'], validationOptions),
         },
     }, validationOptions);
 }

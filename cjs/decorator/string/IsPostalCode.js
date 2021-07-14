@@ -22,12 +22,13 @@ exports.isPostalCode = isPostalCode;
  * If given value is not a string, then it returns false.
  */
 function IsPostalCode(locale, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_POSTAL_CODE,
         constraints: [locale],
         validator: {
             validate: (value, args) => isPostalCode(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a postal code', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a postal code'], validationOptions),
         },
     }, validationOptions);
 }

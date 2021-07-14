@@ -22,12 +22,13 @@ exports.isHash = isHash;
  * 'tiger160', 'tiger192', 'crc32', 'crc32b']
  */
 function IsHash(algorithm, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_HASH,
         constraints: [algorithm],
         validator: {
             validate: (value, args) => isHash(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a hash of type $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a hash of type $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

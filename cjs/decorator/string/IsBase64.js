@@ -20,11 +20,12 @@ exports.isBase64 = isBase64;
  * If given value is not a string, then it returns false.
  */
 function IsBase64(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_BASE64,
         validator: {
             validate: (value, args) => isBase64(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be base64 encoded', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be base64 encoded'], validationOptions),
         },
     }, validationOptions);
 }

@@ -14,6 +14,7 @@ exports.isInstance = isInstance;
  * Checks if the value is an instance of the specified object.
  */
 function IsInstance(targetType, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_INSTANCE,
         constraints: [targetType],
@@ -24,7 +25,7 @@ function IsInstance(targetType, validationOptions) {
                     return eachPrefix + `$property must be an instance of ${args.constraints[0].name}`;
                 }
                 else {
-                    return eachPrefix + `${exports.IS_INSTANCE} decorator expects and object as value, but got falsy value.`;
+                    return eachPrefix + translate[`${exports.IS_INSTANCE} decorator expects and object as value, but got falsy value.`];
                 }
             }, validationOptions),
         },

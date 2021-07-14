@@ -20,11 +20,12 @@ exports.isCreditCard = isCreditCard;
  * If given value is not a string, then it returns false.
  */
 function IsCreditCard(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_CREDIT_CARD,
         validator: {
             validate: (value, args) => isCreditCard(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a credit card', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a credit card'], validationOptions),
         },
     }, validationOptions);
 }

@@ -20,11 +20,12 @@ exports.isBtcAddress = isBtcAddress;
  * If given value is not a string, then it returns false.
  */
 function IsBtcAddress(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_BTC_ADDRESS,
         validator: {
             validate: (value, args) => isBtcAddress(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a BTC address', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a BTC address'], validationOptions),
         },
     }, validationOptions);
 }

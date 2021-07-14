@@ -20,12 +20,13 @@ exports.isAlpha = isAlpha;
  * If given value is not a string, then it returns false.
  */
 function IsAlpha(locale, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ALPHA,
         constraints: [locale],
         validator: {
             validate: (value, args) => isAlpha(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain only letters (a-zA-Z)', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain only letters (a-zA-Z)'], validationOptions),
         },
     }, validationOptions);
 }

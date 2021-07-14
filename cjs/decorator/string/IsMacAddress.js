@@ -17,6 +17,7 @@ function isMACAddress(value, options) {
 }
 exports.isMACAddress = isMACAddress;
 function IsMACAddress(optionsOrValidationOptionsArg, validationOptionsArg) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     const options = !ValidationOptions_1.isValidationOptions(optionsOrValidationOptionsArg) ? optionsOrValidationOptionsArg : undefined;
     const validationOptions = ValidationOptions_1.isValidationOptions(optionsOrValidationOptionsArg)
         ? optionsOrValidationOptionsArg
@@ -26,7 +27,7 @@ function IsMACAddress(optionsOrValidationOptionsArg, validationOptionsArg) {
         constraints: [options],
         validator: {
             validate: (value, args) => isMACAddress(value, options),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a MAC Address', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a MAC Address'], validationOptions),
         },
     }, validationOptions);
 }

@@ -20,11 +20,12 @@ exports.isBIC = isBIC;
  * If given value is not a string, then it returns false.
  */
 function IsBIC(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_BIC,
         validator: {
             validate: (value, args) => isBIC(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a BIC or SWIFT code', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a BIC or SWIFT code'], validationOptions),
         },
     }, validationOptions);
 }

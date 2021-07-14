@@ -16,11 +16,12 @@ exports.isObject = isObject;
  * Returns false if the value is not an object.
  */
 function IsObject(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_OBJECT,
         validator: {
             validate: (value, args) => isObject(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an object', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an object'], validationOptions),
         },
     }, validationOptions);
 }

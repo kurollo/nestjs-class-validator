@@ -14,12 +14,13 @@ exports.isIn = isIn;
  * Checks if given value is in a array of allowed values.
  */
 function IsIn(values, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_IN,
         constraints: [values],
         validator: {
             validate: (value, args) => isIn(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be one of the following values: $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be one of the following values: $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

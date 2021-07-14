@@ -20,11 +20,12 @@ exports.isEthereumAddress = isEthereumAddress;
  * If given value is not a string, then it returns false.
  */
 function IsEthereumAddress(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ETHEREUM_ADDRESS,
         validator: {
             validate: (value, args) => isEthereumAddress(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an Ethereum address', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an Ethereum address'], validationOptions),
         },
     }, validationOptions);
 }

@@ -14,12 +14,13 @@ exports.max = max;
  * Checks if the first number is less than or equal to the second.
  */
 function Max(maxValue, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.MAX,
         constraints: [maxValue],
         validator: {
             validate: (value, args) => max(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must not be greater than $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must not be greater than $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

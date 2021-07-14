@@ -14,12 +14,13 @@ exports.notEquals = notEquals;
  * Checks if value does not match ("!==") the comparison.
  */
 function NotEquals(comparison, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.NOT_EQUALS,
         constraints: [comparison],
         validator: {
             validate: (value, args) => notEquals(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property should not be equal to $constraint1', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property should not be equal to $constraint1'], validationOptions),
         },
     }, validationOptions);
 }

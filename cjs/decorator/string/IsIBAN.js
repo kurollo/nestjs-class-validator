@@ -20,11 +20,12 @@ exports.isIBAN = isIBAN;
  * If given value is not a string, then it returns false.
  */
 function IsIBAN(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_IBAN,
         validator: {
             validate: (value, args) => isIBAN(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an IBAN', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an IBAN'], validationOptions),
         },
     }, validationOptions);
 }

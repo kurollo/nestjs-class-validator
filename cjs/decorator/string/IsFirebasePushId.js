@@ -17,11 +17,12 @@ exports.isFirebasePushId = isFirebasePushId;
  * If given value is not a Firebase Push Id, it returns false
  */
 function IsFirebasePushId(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_FIREBASE_PUSH_ID,
         validator: {
             validate: (value, args) => isFirebasePushId(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a Firebase Push Id', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a Firebase Push Id'], validationOptions),
         },
     }, validationOptions);
 }

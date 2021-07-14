@@ -14,11 +14,12 @@ exports.isInt = isInt;
  * Checks if value is an integer.
  */
 function IsInt(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_INT,
         validator: {
             validate: (value, args) => isInt(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an integer number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an integer number'], validationOptions),
         },
     }, validationOptions);
 }

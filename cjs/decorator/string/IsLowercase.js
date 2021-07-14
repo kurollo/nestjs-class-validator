@@ -20,11 +20,12 @@ exports.isLowercase = isLowercase;
  * If given value is not a string, then it returns false.
  */
 function IsLowercase(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_LOWERCASE,
         validator: {
             validate: (value, args) => isLowercase(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a lowercase string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a lowercase string'], validationOptions),
         },
     }, validationOptions);
 }

@@ -28,12 +28,13 @@ exports.isNotEmptyObject = isNotEmptyObject;
  * Returns false if the value is not an object or an empty valid object.
  */
 function IsNotEmptyObject(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_NOT_EMPTY_OBJECT,
         constraints: [options],
         validator: {
             validate: (value, args) => isNotEmptyObject(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a non-empty object', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a non-empty object'], validationOptions),
         },
     }, validationOptions);
 }

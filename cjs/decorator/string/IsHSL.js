@@ -22,11 +22,12 @@ exports.isHSL = isHSL;
  * If given value is not a string, then it returns false.
  */
 function IsHSL(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_HSL,
         validator: {
             validate: (value, args) => isHSL(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a HSL color', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a HSL color'], validationOptions),
         },
     }, validationOptions);
 }

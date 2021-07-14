@@ -20,11 +20,12 @@ exports.isHalfWidth = isHalfWidth;
  * If given value is not a string, then it returns false.
  */
 function IsHalfWidth(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_HALF_WIDTH,
         validator: {
             validate: (value, args) => isHalfWidth(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain a half-width characters', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain a half-width characters'], validationOptions),
         },
     }, validationOptions);
 }

@@ -16,12 +16,13 @@ exports.arrayMinSize = arrayMinSize;
  * If null or undefined is given then this function returns false.
  */
 function ArrayMinSize(min, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.ARRAY_MIN_SIZE,
         constraints: [min],
         validator: {
             validate: (value, args) => arrayMinSize(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must contain at least $constraint1 elements', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must contain at least $constraint1 elements'], validationOptions),
         },
     }, validationOptions);
 }

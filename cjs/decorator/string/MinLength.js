@@ -20,12 +20,13 @@ exports.minLength = minLength;
  * If given value is not a string, then it returns false.
  */
 function MinLength(min, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.MIN_LENGTH,
         constraints: [min],
         validator: {
             validate: (value, args) => minLength(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be longer than or equal to $constraint1 characters', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be longer than or equal to $constraint1 characters'], validationOptions),
         },
     }, validationOptions);
 }

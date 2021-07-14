@@ -20,11 +20,12 @@ exports.isOctal = isOctal;
  * If given value is not a string, then it returns false.
  */
 function IsOctal(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_OCTAL,
         validator: {
             validate: (value, args) => isOctal(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be valid octal number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be valid octal number'], validationOptions),
         },
     }, validationOptions);
 }

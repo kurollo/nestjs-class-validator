@@ -20,11 +20,12 @@ exports.isEAN = isEAN;
  * If given value is not a string, then it returns false.
  */
 function IsEAN(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_EAN,
         validator: {
             validate: (value, args) => isEAN(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an EAN (European Article Number)', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an EAN (European Article Number)'], validationOptions),
         },
     }, validationOptions);
 }

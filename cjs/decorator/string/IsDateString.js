@@ -15,12 +15,13 @@ exports.isDateString = isDateString;
  * Alias for IsISO8601 validator
  */
 function IsDateString(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_DATE_STRING,
         constraints: [options],
         validator: {
             validate: (value, args) => isDateString(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid ISO 8601 date string', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid ISO 8601 date string'], validationOptions),
         },
     }, validationOptions);
 }

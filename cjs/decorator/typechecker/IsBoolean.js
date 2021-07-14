@@ -14,11 +14,12 @@ exports.isBoolean = isBoolean;
  * Checks if a value is a boolean.
  */
 function IsBoolean(validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_BOOLEAN,
         validator: {
             validate: (value, args) => isBoolean(value),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a boolean value', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a boolean value'], validationOptions),
         },
     }, validationOptions);
 }

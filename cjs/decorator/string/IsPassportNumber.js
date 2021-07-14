@@ -20,12 +20,13 @@ exports.isPassportNumber = isPassportNumber;
  * If given value is not a string, then it returns false.
  */
 function IsPassportNumber(countryCode, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_PASSPORT_NUMBER,
         constraints: [countryCode],
         validator: {
             validate: (value, args) => isPassportNumber(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be valid passport number', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be valid passport number'], validationOptions),
         },
     }, validationOptions);
 }

@@ -10,7 +10,8 @@ const MetadataStorage_1 = require("../../metadata/MetadataStorage");
 function ValidateNested(validationOptions) {
     const opts = { ...validationOptions };
     const eachPrefix = opts.each ? 'each value in ' : '';
-    opts.message = opts.message || eachPrefix + 'nested property $property must be either object or array';
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
+    opts.message = opts.message || eachPrefix + translate['nested property $property must be either object or array'];
     return function (object, propertyName) {
         const args = {
             type: ValidationTypes_1.ValidationTypes.NESTED_VALIDATION,

@@ -20,12 +20,13 @@ exports.maxLength = maxLength;
  * If given value is not a string, then it returns false.
  */
 function MaxLength(max, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.MAX_LENGTH,
         constraints: [max],
         validator: {
             validate: (value, args) => maxLength(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be shorter than or equal to $constraint1 characters', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be shorter than or equal to $constraint1 characters'], validationOptions),
         },
     }, validationOptions);
 }

@@ -20,12 +20,13 @@ exports.isURL = isURL;
  * If given value is not a string, then it returns false.
  */
 function IsUrl(options, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_URL,
         constraints: [options],
         validator: {
             validate: (value, args) => isURL(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be an URL address', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be an URL address'], validationOptions),
         },
     }, validationOptions);
 }

@@ -15,12 +15,13 @@ exports.isEnum = isEnum;
  * Checks if a given value is an enum
  */
 function IsEnum(entity, validationOptions) {
+    const translate = require("../../i18n/"+validationOptions['language']+".json");
     return ValidateBy_1.ValidateBy({
         name: exports.IS_ENUM,
         constraints: [entity],
         validator: {
             validate: (value, args) => isEnum(value, args.constraints[0]),
-            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + '$property must be a valid enum value', validationOptions),
+            defaultMessage: ValidateBy_1.buildMessage(eachPrefix => eachPrefix + translate['$property must be a valid enum value'], validationOptions),
         },
     }, validationOptions);
 }
