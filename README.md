@@ -1,10 +1,12 @@
 # nestjs-class-validator (multi-languages supported)
- 
+
+this package based on [class-validator](https://github.com/typestack/class-validator).
+
 Allows use of decorator and non-decorator based validation.
 Internally uses [validator.js][1] to perform validation with multi-languages messages supported.
 Nestjs-Class-validator works on both browser and node.js platforms.
 
-## Nestjs-class-validator with multi-language
+## Usage Nestjs-class-validator with multi-language
 You can specify validation language in the decorator options and the default message will be returned in the ValidationError based in your language returned by the validate method.
 
 #####NB: language option is required always, if you want to use one language without translate then you should specify your language like this example `language: "en": 
@@ -102,7 +104,7 @@ export class StoreCreateDto extends StoreBaseDto {
 }
 ```
 
-## Table of Contents
+## Table of Contents default class-validator
 
 - [class-validator](#class-validator)
   - [Table of Contents](#table-of-contents)
